@@ -19,20 +19,20 @@ func main() {
 	if *input == "" {
 		log.Fatal("empty input")
 	}
-	expr, err := exp.Parse(*input)
+	expr, err := exp.Parse(*input) //解析表达式
 	if err != nil {
 		log.Fatalf("parse err: %v",err)
 	}
-	gra := expr.GetGraphy()
-	size := gra.Measure(*fontSize)
-	img := image.NewRGBA(image.Rect(0,0, int(exp.FixedToFloat(size.X)*2), int(exp.FixedToFloat(size.Y)*2)))
-	startPoint := fixed.Point26_6{X:size.X/2, Y:size.Y*3/2}
-	gra.Draw(img, startPoint)
+	gra := expr.GetGraphy() //获取绘图工具
+	size := gra.Measure(*fontSize) //测量表达式尺寸
+	img := image.NewRGBA(image.Rect(0,0, int(exp.FixedToFloat(size.X)*2), int(exp.FixedToFloat(size.Y)*2))) //绘图板尺寸是图片的两倍
+	startPoint := fixed.Point26_6{X:size.X/2, Y:size.Y*3/2}  //绘图起点在左下角
+	gra.Draw(img, startPoint) //绘制
 
 	f,err := os.Create(*output)
 	if err!=nil {
 		log.Fatalf("output file: %v", err)
 	}
 	defer f.Close()
-	png.Encode(f, img)
+	png.Encode(f, img) //保存文件
 }
