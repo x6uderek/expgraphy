@@ -8,8 +8,8 @@ import (
 	"image"
 	"image/color"
 	"golang.org/x/image/math/fixed"
-	"derek/expression/paint"
 	"log"
+	"github.com/x6uderek/expgraphy/paint"
 )
 
 type Graphy interface {

@@ -2,12 +2,12 @@ package main
 
 import (
 	"flag"
-	"derek/expression/exp"
 	"log"
 	"image"
 	"golang.org/x/image/math/fixed"
 	"os"
 	"image/png"
+	"github.com/x6uderek/expgraphy/exp"
 )
 
 var input = flag.String("exp", "", "math expression")
